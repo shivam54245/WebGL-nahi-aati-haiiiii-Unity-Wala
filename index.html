@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Three.js Cube Control</title>
+  <title>Colored Cube Control</title>
   <style>
     body { margin: 0; }
     canvas { display: block; }
@@ -11,40 +11,36 @@
 <body>
   <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
   <script>
-    // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    // Cube
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
-    const cube = new THREE.Mesh(geometry, material);
+    // Multi-colored cube
+    const materials = [
+      new THREE.MeshBasicMaterial({ color: 0xff0000 }), // red
+      new THREE.MeshBasicMaterial({ color: 0x00ff00 }), // green
+      new THREE.MeshBasicMaterial({ color: 0x0000ff }), // blue
+      new THREE.MeshBasicMaterial({ color: 0xffff00 }), // yellow
+      new THREE.MeshBasicMaterial({ color: 0xff00ff }), // magenta
+      new THREE.MeshBasicMaterial({ color: 0x00ffff })  // cyan
+    ];
+    const cube = new THREE.Mesh(new THREE.BoxGeometry(), materials);
     scene.add(cube);
 
     camera.position.z = 5;
 
-    // Keyboard controls
+    // Arrow key controls
     window.addEventListener("keydown", (event) => {
       switch(event.key) {
-        case "ArrowUp":
-          cube.rotation.x -= 0.1;
-          break;
-        case "ArrowDown":
-          cube.rotation.x += 0.1;
-          break;
-        case "ArrowLeft":
-          cube.rotation.y -= 0.1;
-          break;
-        case "ArrowRight":
-          cube.rotation.y += 0.1;
-          break;
+        case "ArrowUp": cube.rotation.x -= 0.1; break;
+        case "ArrowDown": cube.rotation.x += 0.1; break;
+        case "ArrowLeft": cube.rotation.y -= 0.1; break;
+        case "ArrowRight": cube.rotation.y += 0.1; break;
       }
     });
 
-    // Animation loop
     function animate() {
       requestAnimationFrame(animate);
       renderer.render(scene, camera);
