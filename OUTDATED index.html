@@ -33,11 +33,9 @@
 
     // Arrow key controls
     window.addEventListener("keydown", (event) => {
-      switch(event.key) {
-        case "ArrowUp": cube.rotation.x -= 0.1; break;
-        case "ArrowDown": cube.rotation.x += 0.1; break;
-        case "ArrowLeft": cube.rotation.y -= 0.1; break;
-        case "ArrowRight": cube.rotation.y += 0.1; break;
+      int once = 0;
+      if(once == 0) {cube.rotation.x += 15; once = 1;}
+      cube.rotation.y -= 0.1;
       }
     });
 
