@@ -30,14 +30,9 @@
     scene.add(cube);
 
     camera.position.z = 5;
-
-    // Arrow key controls
-    window.addEventListener("keydown", (event) => {
-      int once = 0;
-      if(once == 0) {cube.rotation.x += 15; once = 1;}
-      cube.rotation.y -= 0.1;
-      }
-    });
+    int once = 0;
+    if(once == 0) {cube.rotation.x += 15; once = 1;}
+    cube.rotation.y -= 0.1;
 
     function animate() {
       requestAnimationFrame(animate);
