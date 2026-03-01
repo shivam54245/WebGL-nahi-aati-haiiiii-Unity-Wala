@@ -1,41 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Colored Cube Control</title>
-  <style>
-    body { margin: 0; }
-    canvas { display: block; }
-  </style>
-</head>
-<body>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
-  <script>
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity Web Player | Web GL learning karni haii</title>
+  </head>
+  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
+    <canvas id="unity-canvas" width=1280 height=720 tabindex="-1" style="width: 1280px; height: 720px; background: #800080"></canvas>
+    <script src="Build/projection of projectssss.loader.js"></script>
+    <script>
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
 
-const materials = [
-  new THREE.MeshBasicMaterial({ color: 0xff0000 }), 
-  new THREE.MeshBasicMaterial({ color: 0x00ff00 }), 
-  new THREE.MeshBasicMaterial({ color: 0x0000ff }), 
-  new THREE.MeshBasicMaterial({ color: 0xffff00 }), 
-  new THREE.MeshBasicMaterial({ color: 0xff00ff }), 
-  new THREE.MeshBasicMaterial({ color: 0x00ffff })
-];
-const cube = new THREE.Mesh(new THREE.BoxGeometry(), materials);
-scene.add(cube);
-camera.position.z = 5;
-cube.rotation.x = -15; 
+        var canvas = document.querySelector("#unity-canvas");
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.style.position = "fixed";
 
-function animate() {
-  requestAnimationFrame(animate);
-  cube.rotation.y -= 0.01; 
-  renderer.render(scene, camera);
-}
-animate();
-  </script>
-</body>
+        document.body.style.textAlign = "left";
+
+      }
+
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        arguments: [],
+        dataUrl: "Build/projection of projectssss.data",
+        frameworkUrl: "Build/projection of projectssss.framework.js",
+        codeUrl: "Build/projection of projectssss.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Shivuu",
+        productName: "Web GL learning karni haii",
+        productVersion: "1.0.a0",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      }).then((unityInstance) => {
+      }).catch((message) => {
+        alert(message);
+      });
+    </script>
+  </body>
 </html>
