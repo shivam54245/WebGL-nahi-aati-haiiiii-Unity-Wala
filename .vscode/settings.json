@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "WebGL-nahi-aati-haiiiii.slnx"
+    "dotnet.defaultSolution": "WebGL-nahi-aati-haiiiii-Unity-Wala.slnx"
 }
