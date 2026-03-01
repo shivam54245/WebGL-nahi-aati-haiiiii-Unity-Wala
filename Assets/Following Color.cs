@@ -8,7 +8,6 @@ public class FollowingColor : MonoBehaviour
     void Start()
     {
         GetComponent<Renderer>().material.color = Color.yellow;
-        ColorChanger = GameObject.Find("Square").GetComponent<ColourChange>();
     }
 
     // Update is called once per frame
@@ -16,15 +15,15 @@ public class FollowingColor : MonoBehaviour
     {
          if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ColorChanger.SetColor(1);
+            GetComponent<Renderer>().material.color = Color.red;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            ColorChanger.SetColor(2);
+            GetComponent<Renderer>().material.color = Color.green;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            ColorChanger.SetColor(3);
+            GetComponent<Renderer>().material.color = Color.blue;
         }
         
     }
