@@ -10,20 +10,22 @@ public class Gravity : MonoBehaviour
     private Mass mass_self;
 
 
-    void Start()
+    void Awake()
     {
+        mass_self = gameObject.AddComponent<Mass>();
         mass_self.value = mass;
+        Debug.Log("Mass of self: " + mass_self.value);
     }
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float mass_targetObject_value = targetObject.GetComponent<Mass>().value;
-        Vector2 distance = transform.position - transform.position;
-        Vector2 acceleration = G * mass_targetObject_value * distance.normalized / (distance.magnitude * distance.magnitude);
+        Vector2 distance = targetObject.transform.position - transform.position;
+        Vector2 acceleration = G * mass_targetObject_value * distance.normalized / distance.sqrMagnitude;
 
-        velocity += acceleration;
+        velocity += acceleration*Time.deltaTime;
         transform.Translate(velocity * Time.deltaTime);
 
     }
